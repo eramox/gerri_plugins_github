@@ -72,36 +72,6 @@ GitHub plugin is designed to work with Gerrit 2.10 (currently in development).
 In order to build the GitHub plugin you need to have a working Gerrit 2.10
 build in place.
 
-See https://gerrit-review.googlesource.com/Documentation/dev-buck.html for a
-reference on how to build Gerrit 2.10 (master branch) using BUCK.
-
-### GitHub API
-
-In order to access GitHub API, we have used the lucamilanesio fork of Kohsuke API 
-layer hosted on GitHub at https://github.com/lucamilanesio/github-api.
-
-You need to clone and build the GitHub API as pre-requisite for building the
-GitHub plugin for Gerrit.
-
-Example:
-  git clone https://github.com/lucamilanesio/github-api.git
-  cd github-api
-  mvn install -DskipTests=true
-
-### singleusergroup plugin
-
-You need to clone, build and install the singleusergroup plugin for Gerrit
-(see https://gerrit-review.googlesource.com/#/admin/projects/plugins/singleusergroup).
-
-This plugin is needed to allow Gerrit to use individual users as Groups for being
-used in Gerrit ACLs. As of Gerrit 2.10 singleuserplugin is a core plugin and
-included in Gerrit tree (if it was cloned recursively).
-
-Example:
-  cd gerrit
-  buck build plugins/singleusergroup
-  cp buck-out/gen/plugins/singleusergroup/singleusergroup.jar $GERRIT_SITE/plugins/.
-
 ### Building GitHub integration for Gerrit
 
 Just clone the Git repository (see https://gerrit-review.googlesource.com/#/admin/projects/plugins/github)
