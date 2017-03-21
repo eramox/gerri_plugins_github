@@ -25,7 +25,7 @@ import com.google.gerrit.reviewdb.client.AccountExternalId;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.account.AccountCache;
 import com.google.gerrit.server.account.AccountState;
-import com.google.gerrit.server.account.ExternalId;
+import com.google.gerrit.reviewdb.client.AccountExternalId;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -81,9 +81,9 @@ public class IdentifiedUserGitHubLoginProvider implements
 
   private AccessToken newAccessTokenFromUser(String username) {
     AccountState account = accountCache.getByUsername(username);
-    Collection<ExternalId> externalIds = account.getExternalIds();
-    for (ExternalId accountExternalId : externalIds) {
-      String key = accountExternalId.asAccountExternalId().getKey().get();
+    Collection<AccountExternalId> externalIds = account.getExternalIds();
+    for (AccountExternalId accountExternalId : externalIds) {
+      String key = accountExternalId.getKey().get();
       if (key.startsWith(EXTERNAL_ID_PREFIX)) {
         return new AccessToken(key.substring(EXTERNAL_ID_PREFIX.length()));
       }
