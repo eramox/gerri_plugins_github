@@ -59,6 +59,26 @@ limitations under the License.
           </execution>
         </executions>
       </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-install-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>install_local</id>
+                    <phase>install</phase>
+                    <goals>
+                        <goal>install-file</goal>
+                    </goals>
+                    <configuration>
+			<groupId>com.google.gerrit</groupId>
+			<artifactId>github-oauth</artifactId>
+			<version>${project.version}</version>
+                        <file>target/github-oauth-${project.version}.jar</file>
+			<generatePom>true</generatePom>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin> 
     </plugins>
   </build>
   <dependencies>
